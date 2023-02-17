@@ -20,9 +20,10 @@ int main(void)
 			putchar(m + '0');
 			if (n == 8 && m == 9)
 				break;
-			putchr(',');
-			putchr(' ');
+			putchar(',');
+			putchar(' ');
 		}
 	}
+	putchar('\n');
 	return (0);
 }
