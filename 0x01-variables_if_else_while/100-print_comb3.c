@@ -9,17 +9,19 @@
  */
 int main(void)
 {
-	int n;
-	int m;
-	
-	n = 0;
-	m = 0;
+	int n = 0;
+	int m = 0;
+
 	while (n < 10)
 	{
+		m = 1;
 		while (m < 10)
 		{
 			if (m == n)
+			{
+				m++;
 				continue;
+			}
 			putchar(n + '0');
 			putchar(m + '0');
 			if (n == 8 && m == 9)
