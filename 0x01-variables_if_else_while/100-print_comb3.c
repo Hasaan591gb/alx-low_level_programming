@@ -11,20 +11,24 @@ int main(void)
 {
 	int n;
 	int m;
-
-	for (n = 0; n < 10; n++)
+	
+	n = 0;
+	m = 0;
+	while (n < 10)
 	{
-		for (m = 0; m < 10; m++)
+		while (m < 10)
 		{
 			if (m == n)
-				break;
+				continue;
 			putchar(n + '0');
 			putchar(m + '0');
 			if (n == 8 && m == 9)
 				break;
 			putchar(',');
 			putchar(' ');
+			m++;
 		}
+		n++;
 	}
 	putchar('\n');
 	return (0);
