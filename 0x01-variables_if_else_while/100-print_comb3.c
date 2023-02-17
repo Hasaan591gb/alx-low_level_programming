@@ -14,10 +14,12 @@ int main(void)
 
 	for (n = 0; n < 10; n++)
 	{
-		for (m = 0; m < 10 && m != n; m++)
+		for (m = 0; m < 10; m++)
 		{
-			putchar(m + '0');
+			if (m == n)
+				break;
 			putchar(n + '0');
+			putchar(m + '0');
 			if (n == 8 && m == 9)
 				break;
 			putchar(',');
