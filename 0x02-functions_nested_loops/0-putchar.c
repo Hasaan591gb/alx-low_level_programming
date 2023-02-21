@@ -25,6 +25,6 @@ int main(void)
 {
 	char *str = "_putchar";
 	printstr(str);
-	_putchar('\n')
+	_putchar('\n');
 	return (0);
 }
