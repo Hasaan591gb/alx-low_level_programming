@@ -17,7 +17,7 @@ void print_times_table(int n)
 			{
 				multiple = i * j;
 				if (n == 0)
-					printf("%d\n", multiple)
+					printf("%d\n", multiple);
 				else if (j != n)
 				{
 					if (multiple == 0 && j == 0)
