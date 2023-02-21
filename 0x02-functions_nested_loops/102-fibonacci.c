@@ -11,16 +11,16 @@ int main(void)
 
 	num1 = 1;
 	num2 = 2;
-	printf("%d, ", num1);
-	printf("%d, ", num2);
+	printf("%ld, ", num1);
+	printf("%ld, ", num2);
 	for (i = 0; i < 48; i++)
 	{
 		num2 = num1 + num2;
 		num1 = num2 - num1;
 		if (i != 47)
-			printf("%d, ", num2);
+			printf("%ld, ", num2);
 		else
-			printf("%d\n", num2);
+			printf("%ld\n", num2);
 	}
 	return (0);
 }
