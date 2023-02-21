@@ -19,7 +19,11 @@ void print_times_table(int n)
 				if (j != n)
 				{
 					if (multiple == 0)
+					{
+						if (i == 0 && j == 0)
+							printf("%d,", multiple);
 						printf("%4d,", multiple);
+					}
 					else
 						printf("%4d,", multiple);
 				}
