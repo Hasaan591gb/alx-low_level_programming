@@ -18,6 +18,7 @@ void print_to_98(int n)
 			{
 				_putchar(',');
 				_putchar(' ');
+				break;
 			}
 		}
 		_putchar('\n');
@@ -31,6 +32,7 @@ void print_to_98(int n)
 			{
 				_putchar(',');
 				_putchar(' ');
+				break;
 			}
 		}
 		_putchar('\n');
