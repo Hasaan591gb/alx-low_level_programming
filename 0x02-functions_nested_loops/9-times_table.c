@@ -19,12 +19,13 @@ void times_table(void)
 			first_digit = multiple / 10;
 			if (first_digit > 0)
 				_putchar(first_digit + '0');
-			else if (first_digit == 0)
+			else
 				_putchar(' ');
 			_putchar(last_digit + '0');
 			if (j != 9)
 			{
 				_putchar(',');
+				_putchar(' ');
 			}
 		}
 		_putchar('\n');
