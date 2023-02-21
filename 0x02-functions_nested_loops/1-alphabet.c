@@ -1,8 +1,5 @@
 #include "main.h"
 
-/* function declaration */
-int _putchar(char c);
-
 /**
  * print_alphabet - Prints alphabets to console
  */
@@ -12,4 +9,5 @@ void print_alphabet(void)
 
 	for (i = 'a'; i <= 'z'; i++)
 		_putchar(i);
+	_putchar('\n');
 }
