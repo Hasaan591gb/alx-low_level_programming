@@ -13,19 +13,19 @@ void print_times_table(int n)
 	{
 		for (i = 0; i <= n; i++)
 		{
-			for (j = 1; j <= n + 1; j++)
+			for (j = 0; j <= n; j++)
 			{
 				multiple = i * j;
-				if (multiple == 0)
-					printf("%d", multiple);
-				else if (multiple < 10)
-					printf(",   %d", multiple);
-				else if (multiple < 100)
-					printf(",  %d", multiple);
-				else if (multiple < 1000)
-					printf(", %d", multiple);
+				if (j != n)
+				{
+					if (multiple == 0)
+						printf("%d,   ", multiple);
+					else
+						printf("%4d,", multiple);
+				}
+				else
+					printf("%4d\n", multiple);
 			}
-			_putchar('\n');
 		}
 	}
 }
