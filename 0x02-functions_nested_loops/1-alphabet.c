@@ -12,16 +12,5 @@ void print_alphabet(void)
 
 	for (i = 'a'; i <= 'z'; i++)
 		_putchar(i);
-}
-
-/**
- * main - Entry point for the program
- * Description: Print alphabets to console
- * Return: Always 0 (success)
- */
-int main(void)
-{
-	print_alphabet();
 	_putchar('\n');
-	return (0);
 }
