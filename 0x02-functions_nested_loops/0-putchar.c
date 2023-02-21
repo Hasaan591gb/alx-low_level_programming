@@ -4,8 +4,10 @@
 int _putchar(char c);
 
 /**
- * uses _putchar to print string of char
- * returns 0 always (success)
+ * printstr - prints a string of characters to stdout
+ * @string: The string to print
+ *
+ * Return: The number of characters printed
  */
 int printstr(char *string)
 {
@@ -19,11 +21,12 @@ int printstr(char *string)
 /**
  * main - Entry point for the program
  * Description: use _putchar.c and main.h to print _putchar
- * return: Always 0 (Success)
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
 	char *str = "_putchar";
+
 	printstr(str);
 	_putchar('\n');
 	return (0);
