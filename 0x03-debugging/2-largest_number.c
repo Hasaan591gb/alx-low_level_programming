@@ -12,17 +12,19 @@ float largest_number(float a, float b, float c)
 {
 	float largest;
 
-	if (a >= b && b >= c)
+	if (a >= b)
 	{
-		largest = a;
-	}
-	else if (b >= a && a >= c)
-	{
-		largest = b;
+		if (a >= c)
+			largest = a;
+		else
+			largest = c;
 	}
 	else
 	{
-		largest = c;
+		if (b >= c)
+			largest = b;
+		else
+			largest = c;
 	}
 
 	return (largest);
