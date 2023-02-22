@@ -1,27 +1,57 @@
 #include <stdio.h>
 
 /**
+ * numLength - returns the length of number
+ * @num: parameter
+ * Return: number of digits in parameter
+ */
+int numLength(int num)
+{
+	int length;
+
+	length = 0;
+	if (!num)
+		return (1);
+	while (num)
+	{
+		num = num / 10;
+		length += 1;
+	}
+	return (length);
+}
+
+/**
  * main - Entry point for the program
- * Description: print first 98 numbers of fibonacci sequence
+ * Description: Print first 98 fibonacci numbers
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-	unsigned long int num1, num2;
-	int i;
+	unsigned long f1 = 1, f2 = 2, tmp, mx = 100000000, f1o = 0, f2o = 0, tmpo = 0;
+	short int i = 1, initial0s;
 
-	num1 = 1;
-	num2 = 2;
-	printf("%lu, ", num1);
-	printf("%lu, ", num2);
-	for (i = 0; i < 96; i++)
+	while (i <= 98)
 	{
-		num2 = num1 + num2;
-		num1 = num2 - num1;
-		if (i != 95)
-			printf("%lu, ", num2);
+		if (f1o > 0)
+			printf("%lu", f1o);
+		initial0s = numLength(mx) - 1 - numLength(f1);
+		while (f1o > 0 && initial0s > 0)
+		{
+			printf("%i", 0);
+			initial0s--;
+		}
+		printf("%lu", f1);
+		tmp = (f1 + f2) % mx;
+		tmpo = f1o + f2o + (f1 + f2) / mx;
+		f1 = f2;
+		f1o = f2o;
+		f2 = tmp;
+		f2o = tmpo;
+		if (i != 98)
+			printf(", ");
 		else
-			printf("%lu\n", num2);
+			printf("\n");
+		i++;
 	}
 	return (0);
 }
