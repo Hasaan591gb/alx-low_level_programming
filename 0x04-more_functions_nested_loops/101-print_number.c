@@ -8,6 +8,8 @@ void print_number(int n)
 {
 	int r;
 
+	if (n == 0)
+		_putchar('0');
 	if (n < 0)
 	{
 		n *= -1;
@@ -24,6 +26,4 @@ void print_number(int n)
 		_putchar((r % 10) + '0');
 		r /= 10;
 	}
-	if (n == 0)
-		_putchar('0');
 }
