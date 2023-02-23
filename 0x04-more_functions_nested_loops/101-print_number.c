@@ -6,22 +6,22 @@
  */
 void print_number(int n)
 {
-	int divisor = 1;
-	long abs_n = n;
+	int divisor;
 
-	if (abs_n < 0)
+	divisor = 1;
+	if (n < 0)
 	{
 		_putchar('-');
-		abs_n = -abs_n;
+		n = -n;
 	}
-	while (abs_n / divisor >= 10)
+	while (n / divisor >= 10)
 		divisor *= 10;
 	while (divisor != 0)
 	{
-		int digit = abs_n / divisor;
+		int digit = n / divisor;
 
 		_putchar(digit + '0');
-		abs_n %= divisor;
+		n %= divisor;
 		divisor /= 10;
 	}
 }
