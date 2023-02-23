@@ -7,8 +7,8 @@
  */
 int main(void)
 {
-	long long int number;
-	int n, flag;
+	unsigned long number;
+	unsigned int n, flag;
 
 	flag = 1;
 	number = 612852475143;
@@ -19,7 +19,7 @@ int main(void)
 			if (number == n)
 			{
 				printf("%d\n", n);
-				!flag;
+				flag = 0;
 			}
 			number /= n;
 		}
