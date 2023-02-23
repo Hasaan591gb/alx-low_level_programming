@@ -7,7 +7,7 @@
 void print_number(int n)
 {
 	int divisor = 1;
-	long long abs_n = n;
+	long abs_n = n;
 
 	if (abs_n < 0)
 	{
