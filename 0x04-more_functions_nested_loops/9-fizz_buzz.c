@@ -8,10 +8,10 @@ int main(void)
 {
 	int i, mod1, mod2;
 
-	mod1 = i % 3;
-	mod2 = i % 5;
 	for (i = 1; i <= 100; i++)
 	{
+		mod1 = i % 3;
+		mod2 = i % 5;
 		if (!mod1 && mod2)
 			printf("Fizz ");
 		else if (mod1 && !mod2)
