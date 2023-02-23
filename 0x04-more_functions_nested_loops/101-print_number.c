@@ -12,7 +12,7 @@ void print_number(int n)
 		_putchar('0');
 	if (n < 0)
 	{
-		n *= -1;
+		n = -n;
 		_putchar('-');
 	}
 	r = 0;
