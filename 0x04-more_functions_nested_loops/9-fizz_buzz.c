@@ -6,14 +6,12 @@
  */
 int main(void)
 {
-	int i;
+	int i, mod1, mod2;
 
+	mod1 = i % 3;
+	mod2 = i % 5;
 	for (i = 1; i <= 100; i++)
 	{
-		int mod1, mod2;
-
-		mod1 = i % 3;
-		mod2 = i % 5;
 		if (!mod1 && mod2)
 			printf("Fizz ");
 		else if (mod1 && !mod2)
@@ -21,12 +19,11 @@ int main(void)
 			if (i != 100)
 				printf("Buzz ");
 			else
-				printf("Buzz");
+				printf("Buzz\n");
 		}
 		else if (!mod1 && !mod2)
 			printf("FizzBuzz ");
 		else
 				printf("%d ", i);
 	}
-	printf("\n");
 }
