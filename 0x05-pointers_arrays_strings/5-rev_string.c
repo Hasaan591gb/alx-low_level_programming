@@ -23,6 +23,7 @@ int _strlen(char *str)
 void rev_string(char *s)
 {
 	int length, i, j, a, b;
+	char x;
 
 	a = 0;
 	b = -1;
@@ -32,7 +33,7 @@ void rev_string(char *s)
 	{
 		x = s[a];
 		s[a] = s[b];
-		s[b] = x
+		s[b] = x;
 		a++;
 		b--;
 	}
