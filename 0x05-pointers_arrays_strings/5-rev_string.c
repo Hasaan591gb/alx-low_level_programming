@@ -17,24 +17,31 @@ int _strlen(char *str)
 }
 
 /**
+ * swap_char - swaps parameters
+ * @a: parameter1
+ * @b: parameter2
+ */
+void swap_char(char *a, char *b)
+{
+	char temp;
+
+	temp = *a;
+	*a = *b;
+	*b = *a;
+}
+
+/**
  * rev_string - reverse string parameter
  * @s: string parameter
  */
 void rev_string(char *s)
 {
-	int length, i, j, a, b;
-	char x;
+	int length, i;
 
-	a = 0;
-	b = -1;
 	length = _strlen(s);
-	i = length / 2;
-	for (j = 0; j < i; j++)
+	for (i = 0, length > i; i++)
 	{
-		x = s[a];
-		s[a] = s[b];
-		s[b] = x;
-		a++;
-		b--;
+		swap_char(s + length, s + i);
+		length--;
 	}
 }
