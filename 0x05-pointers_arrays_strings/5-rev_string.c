@@ -23,16 +23,17 @@ int _strlen(char *str)
 void rev_string(char *s)
 {
 	int n, m;
+	char temp_str[_strlen(s)];
 
 	m = 0;
-	n = _strlen(s);
-	for (; s[n] != s[0]; n--)
+	for (n = _strlen(s); s[n] != s[0]; n--)
 	{
 		if (s[n] == '\0')
 			continue;
-		s[n] = s[m];
+		temp_str[m] = s[n];
 		m++;
 	}
-	s[-1] = s[0];
-	s[-2] = '\0';
+	temp_str[m] = s[0];
+	for (n = 0; temp_str != '\0'; n++)
+		s[n] = temp_str[n];
 }
