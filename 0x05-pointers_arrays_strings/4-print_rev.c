@@ -31,6 +31,7 @@ void print_rev(char *s)
 			continue;
 		_putchar(s[n]);
 	}
-	_putchar(s[0]);
+	if (s != NULL)
+		_putchar(s[0]);
 	_putchar('\n');
 }
