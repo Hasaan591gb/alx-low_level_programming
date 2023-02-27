@@ -31,7 +31,7 @@ void print_rev(char *s)
 			continue;
 		_putchar(s[n]);
 	}
-	if (s != NULL)
+	if (_strlen(s) != 0)
 		_putchar(s[0]);
 	_putchar('\n');
 }
