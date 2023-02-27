@@ -25,9 +25,12 @@ void print_rev(char *s)
 	int n;
 
 	n = _strlen(s);
-	do {
+	for (; s[n] != s[0]; n--)
+	{
+		if (s[n] == '\0')
+			continue;
 		_putchar(s[n]);
-		n--;
-	} while (s[n] != s[0]);
+	}
+	_putchar(s[0]);
 	_putchar('\n');
 }
