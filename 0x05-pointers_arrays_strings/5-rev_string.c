@@ -33,6 +33,6 @@ void rev_string(char *s)
 		s[n] = s[m];
 		m++;
 	}
-	s[m] = s[0];
-	s[m + 1] = '\0';
+	s[-1] = s[0];
+	s[-2] = '\0';
 }
