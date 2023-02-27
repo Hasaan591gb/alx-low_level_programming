@@ -16,21 +16,17 @@ int _strlen(char *str)
 	return (length);
 }
 
-/**
- * rev_string - reverse string parameter
- * @s: string parameter
- */
 void rev_string(char *s)
 {
+	int length = _strlen(s);
+
 	int n, m;
-	char temp_str[10000];
+	char temp_str[length];
 
 	m = 0;
-	for (n = _strlen(s); s[n] != s[0]; n--)
+	for (n = length; s[n - 1] != s[0]; n--)
 	{
-		if (s[n] == '\0')
-			continue;
-		temp_str[m] = s[n];
+		temp_str[m] = s[n - 1];
 		m++;
 	}
 	temp_str[m] = s[0];
