@@ -1,4 +1,4 @@
-#include "main"
+#include "main.h"
 
 /**
  * puts2 - prints every second char of str
