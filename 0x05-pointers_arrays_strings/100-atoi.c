@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * _atoi - changes a string to integer
  *  @s: string parameter to be changed
@@ -5,12 +7,25 @@
  */
 int _atoi(char *s)
 {
-	int sign, result;
+	int i = 0;
+	unsigned int result = 0;
+	int sign = 1;
+	int flag = 0;
 
-	sign = 1;
-	if (*s == '-')
-		sign *= -1;
-	for (; *s >= '0' && *s <= '9'; *s++)
-		result = (result * 10) + (*s - '0');
-	return (result * sign);
+	while (s[i])
+	{
+		if (s[i] == 45)
+			sign *= -1;
+		while (s[i] >= 48 && s[i] <= 57)
+		{
+			flag = 1;
+			result = (result * 10) + (s[i] - '0');
+			i++;
+		}
+		if (flag == 1)
+			break;
+		i++;
+	}
+	result *= sign;
+	return (result);
 }
