@@ -5,13 +5,12 @@
  */
 int _atoi(char *s)
 {
-	int sign, result, i;
+	int sign, result;
 
-	i = 0;
 	sign = 1;
-	if (s[i] == '-')
+	if (*s == '-')
 		sign *= -1;
-	for (i = 0; s[i] >= '0' && s[i] <= '9'; i++)
-		result = (result * 10) + (s[i] - '0');
+	for (i = 0; *s >= '0' && *s <= '9'; i++)
+		result = (result * 10) + (*s - '0');
 	return (result * sign);
 }
