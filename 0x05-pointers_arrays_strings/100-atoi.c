@@ -10,7 +10,7 @@ int _atoi(char *s)
 	sign = 1;
 	if (*s == '-')
 		sign *= -1;
-	for (i = 0; *s >= '0' && *s <= '9'; i++)
+	for (; *s >= '0' && *s <= '9'; *s++)
 		result = (result * 10) + (*s - '0');
 	return (result * sign);
 }
