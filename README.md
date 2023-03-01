@@ -1,1 +1,1 @@
-This is a repository that contains basic C programming 
+this uses the basic concepts in C
