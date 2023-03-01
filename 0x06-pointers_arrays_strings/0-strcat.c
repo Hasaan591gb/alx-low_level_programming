@@ -20,6 +20,7 @@ int _strlen(char *s)
  * _strcat - concatenate two strings
  * @dest: parameter to concatenate in
  * @src: parameter to concatenate
+ * Return: Concatenated dest
  */
 char *_strcat(char *dest, char *src)
 {
@@ -29,4 +30,5 @@ char *_strcat(char *dest, char *src)
 	for (i = 0; src[i] != '\0'; i++)
 		dest[length_dest + i] = src[i];
 	dest[length_dest + i] = '\0';
+	return (dest);
 }
