@@ -22,7 +22,7 @@ char *leet(char *str)
 	characters[19] = '1';
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		for (j = 0; characters[j] != '\0'; i += 2)
+		for (j = 0; characters[j] != '\0'; i++)
 		{
 			if (str[i] == characters[j])
 				str[i] = characters[j + 1];
