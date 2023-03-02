@@ -7,25 +7,16 @@
  */
 char *leet(char *str)
 {
-	char characters[20] = {'a', '4', 'A', '4', 'e', '3', 'E', '3', 'o', '0'};
+	char characters[10] = {'a', 'A', 'e', 'E', 'o', 'O', 't', 'T', 'l', 'L'};
+	int num[5] = {4, 3, 0, 7, 1};
 	int i, j;
 
-	characters[10] = 'O';
-	characters[11] = '0';
-	characters[12] = 't';
-	characters[13] = '7';
-	characters[14] = 'T';
-	characters[15] = '7';
-	characters[16] = 'l';
-	characters[17] = '1';
-	characters[18] = 'L';
-	characters[19] = '1';
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		for (j = 0; characters[j] != '\0'; j++)
 		{
 			if (str[i] == characters[j])
-				str[i] = characters[j + 1];
+				str[i] = num[j / 2] + '0';
 		}
 	}
 	return (str);
