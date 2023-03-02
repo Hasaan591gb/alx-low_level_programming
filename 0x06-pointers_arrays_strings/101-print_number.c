@@ -6,39 +6,20 @@
  */
 void print_number(int n)
 {
-	int length, sign, divisor, quotient;
-	int i, m;
+	int divisor;
 
-	m = n;
-	sign = 1;
 	divisor = 1;
-	length = 0;
 	if (n < 0)
 	{
-		sign = -1;
-		n *= -1;
+		_putchar('-');
+		n = -n;
 	}
-	for (i = 0; m != 0 && m != 1; i++)
-	{
-		m /= 10;
-		length++;
-	}
-	for (i = 0; i < length; i++)
+	while (n / divisor > 9)
 		divisor *= 10;
-	for (i = 0; divisor != 1; i++)
+	while (divisor != 0)
 	{
-		quotient = n / divisor;
-		n -= (quotient * divisor);
+		_putchar((n / divisor) + '0');
+		n %=  divisor;
 		divisor /= 10;
-		if (sign < 0)
-		{
-			_putchar('-');
-			sign *= -1;
-		}
-		_putchar(quotient + '0');
-		if (divisor == 1)
-			_putchar(n + '0');
 	}
-	if (n == 0)
-		_putchar('0');
 }
