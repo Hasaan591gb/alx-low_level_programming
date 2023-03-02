@@ -12,7 +12,13 @@ void print_number(int n)
 	if (n < 0)
 	{
 		_putchar('-');
-		n = -n;
+		if (n == -2147483648)
+		{
+			_putchar('2');
+			n = -(n + 2000000000);
+		}
+		else
+			n = -n;
 	}
 	while (n / divisor > 9)
 		divisor *= 10;
