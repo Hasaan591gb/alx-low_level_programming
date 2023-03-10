@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 		if (!isdigit(arg[0]))
 		{
 			printf("Error\n");
-			return 1;
+			return (1);
 		}
 		value = atoi(arg);
 		sum += value;
