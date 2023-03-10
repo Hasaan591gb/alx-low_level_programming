@@ -16,11 +16,17 @@ int main(int argc, char *argv[])
 	for (i = 1; i < argc; i++)
 	{
 		char *arg = argv[i];
+		int j;
 
-		if (!isdigit(arg[0]) && (arg[0] != '-' || !isdigit(arg[1])))
+		for (j = 0; arg[j] != '\0'; j++)
 		{
-			printf("Error\n");
-			return (1);
+			if (j == 0 && arg[j] == '-')
+				continue;
+			if (!isdigit(arg[j]))
+			{
+				printf("Error\n");
+				return (1);
+			}
 		}
 		value = atoi(arg);
 		sum += value;
