@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	{
 		char *arg = argv[i];
 
-		if (!isdigit(arg[0]))
+		if (!isdigit(arg[0]) && arg[0] != '-')
 		{
 			printf("Error\n");
 			return (1);
