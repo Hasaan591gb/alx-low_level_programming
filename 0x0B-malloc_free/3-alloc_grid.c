@@ -27,7 +27,7 @@ int **alloc_grid(int width, int height)
 		{
 			for (j = 0; j < i; j++)
 				free(*(ptr_grid + j));
-			free(pre_grid);
+			free(ptr_grid);
 			return (NULL);
 		}
 	}
