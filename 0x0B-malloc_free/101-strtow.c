@@ -2,6 +2,29 @@
 #include <stdlib.h>
 
 /**
+ * check_NULL - checks if parameter is empty
+ * @str: parameter string
+ * Return: 1 if yes 0 otherwise
+ */
+int check_NULL(char *str)
+{
+	int i;
+
+	if (str == NULL)
+		return (1);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] == ' ')
+			continue;
+		if (str[i] != ' ')
+			break;
+	}
+	if (str[i] == '\0')
+		return (1);
+	return (0);
+}
+
+/**
  * alloc_mem - allocates memory
  * @j: value of j
  * @elements: number of words
@@ -53,7 +76,8 @@ char **strtow(char *str)
 	int i, j, elements = 1;
 	char **ptr_strtow;
 
-	if (str == NULL || *str == '\0')
+	i = check_NULL(str);
+	if (i == 1)
 		return (NULL);
 
 	for (j = 0; str[j] == ' '; j++)
