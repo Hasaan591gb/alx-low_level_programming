@@ -61,6 +61,9 @@ char **alloc_mem(int j, int elements, char *str)
 			free(ptr_strtow);
 			return (NULL);
 		}
+		for (k = 0; k < length; k++)
+			ptr_strtow[i][k] = str[j - length + k];
+		ptr_strtow[i][length] = '\0';
 	}
 
 	return (ptr_strtow);
