@@ -53,7 +53,7 @@ char **strtow(char *str)
 	int i, j, elements = 2;
 	char **ptr_strtow;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || str == "")
 		return (NULL);
 
 	for (j = 0; str[j] == ' '; j++)
