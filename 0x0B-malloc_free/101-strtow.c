@@ -41,7 +41,7 @@ char **alloc_mem(int j, int elements, char *str)
 	if (ptr_strtow == NULL)
 		return (NULL);
 
-	for (i = 0; i < elements; i++)
+	for (i = 0; i < (elements - 1); i++)
 	{
 		length = 0;
 		for (; str[j] != '\0'; j++)
@@ -92,7 +92,7 @@ char **strtow(char *str)
 
 	for (j = 0; str[j] == ' '; j++)
 		continue;
-	for (i = 0; i < (elements - 1); i++)
+	for (i = 0; i < elements; i++)
 	{
 		for (; str[j] != ' ' && str[j] != '\0'; j++)
 			ptr_strtow[i][j] = str[j];
