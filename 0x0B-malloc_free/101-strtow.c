@@ -25,84 +25,50 @@ int check_NULL(char *str)
 }
 
 /**
- * alloc_mem - allocates memory
- * @j: value of j
- * @elements: number of words
- * @str: parent string
- * Return: pointer to an array of strings
- */
-char **alloc_mem(int j, int elements, char *str)
-{
-	int i, k, length;
-	char **ptr_strtow;
-
-	ptr_strtow = (char **) malloc(sizeof(char *) * elements);
-
-	if (ptr_strtow == NULL)
-		return (NULL);
-
-	for (i = 0; i < (elements - 1); i++)
-	{
-		length = 0;
-		for (; str[j] != '\0'; j++)
-		{
-			if (str[j] == ' ')
-				break;
-			length++;
-		}
-		for (; str[j] == ' '; j++)
-			continue;
-
-		ptr_strtow[i] = malloc(sizeof(char) * (length + 1));
-		if (*(ptr_strtow + i) == NULL)
-		{
-			for (k = 0; k <= i; k++)
-				free(*(ptr_strtow + k));
-			free(ptr_strtow);
-			return (NULL);
-		}
-		for (k = 0; k < length; k++)
-			ptr_strtow[i][k] = str[j - length + k];
-		ptr_strtow[i][length] = '\0';
-	}
-
-	return (ptr_strtow);
-}
-
-/**
  * strtow - splits a string into words
  * @str: string to split
  * Return: pointer to array of strings
  */
 char **strtow(char *str)
 {
-	int i, j, elements = 2;
-	char **ptr_strtow;
+	int i, j, k, num_words, word_start, word_len;
+	char **words, *word;
 
 	i = check_NULL(str);
 	if (i == 1)
 		return (NULL);
 
+	num_words = 0;
 	for (j = 0; str[j] == ' '; j++)
 		continue;
 	for (i = j; str[i] != '\0'; i++)
 	{
 		if (str[i] == ' ' && str[i + 1] != ' ' && str[i + 1] != '\0')
-			elements++;
+			num_words++;
 	}
-
-	ptr_strtow = alloc_mem(j, elements, str);
-
-	for (j = 0; str[j] == ' '; j++)
-		continue;
-	for (i = 0; i < elements; i++)
+	num_words++;
+	words = (char **) malloc((num_words + 1) * sizeof(char *));
+	if (words == NULL)
+		return (NULL);
+	word_start = 0;
+	word_len = 0;
+	j = 0;
+	for (i = 0; i < num_words; i++)
 	{
+		while (str[j] == ' ')
+			j++;
+		word_start = j;
 		for (; str[j] != ' ' && str[j] != '\0'; j++)
-			ptr_strtow[i][j] = str[j];
-		ptr_strtow[i][j] = '\0';
-		for (; str[j] == ' '; j++)
-			continue;
+			word_len++;
+		word = (char *) malloc((word_len + 1) * sizeof(char));
+		if (word == NULL)
+			return (NULL);
+		for (k = 0; k < word_len; k++)
+			word[k] = str[word_start + k];
+		word[word_len] = '\0';
+		words[i] = word;
+		word_len = 0;
 	}
-
-	return (ptr_strtow);
+	words[num_words] = NULL;
+	return (words);
 }
