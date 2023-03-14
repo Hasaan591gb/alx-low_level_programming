@@ -50,7 +50,7 @@ char **alloc_mem(int j, int elements, char *str)
  */
 char **strtow(char *str)
 {
-	int i, j, k, length, elements = 2;
+	int i, j, elements = 2;
 	char **ptr_strtow;
 
 	if (str == NULL || *str == '\0')
