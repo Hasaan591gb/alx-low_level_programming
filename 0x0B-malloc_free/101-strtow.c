@@ -50,10 +50,10 @@ char **alloc_mem(int j, int elements, char *str)
  */
 char **strtow(char *str)
 {
-	int i, j, elements = 2;
+	int i, j, elements = 1;
 	char **ptr_strtow;
 
-	if (str == NULL || str == "")
+	if (str == NULL || *str == '\0')
 		return (NULL);
 
 	for (j = 0; str[j] == ' '; j++)
@@ -68,7 +68,7 @@ char **strtow(char *str)
 
 	for (j = 0; str[j] == ' '; j++)
 		continue;
-	for (i = 0; i < (elements - 1); i++)
+	for (i = 0; i < elements; i++)
 	{
 		for (; str[j] != ' ' && str[j] != '\0'; j++)
 			ptr_strtow[i][j] = str[j];
@@ -76,7 +76,6 @@ char **strtow(char *str)
 		for (; str[j] == ' '; j++)
 			continue;
 	}
-	ptr_strtow[i][0] = '\0';
 
 	return (ptr_strtow);
 }
