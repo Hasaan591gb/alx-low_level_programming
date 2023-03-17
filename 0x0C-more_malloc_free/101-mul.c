@@ -33,110 +33,60 @@ int _strlen(char *s)
 }
 
 /**
- * _isvalid - checks whether arguments to main are valid
- * @argc: argument count
- * @argv: argument vector
+ * errors - handles errors for main
  */
-void _isvalid(int argc, char **argv)
+void errors(void)
 {
-	char *num1, *num2;
-
-	if (argc != 3)
-	{
-		printf("Error\n");
-		exit(98);
-	}
-
-	num1 = *(argv + 1);
-	num2 = *(argv + 2);
-	if (!_isdigit(num1) || !_isdigit(num2))
-	{
-		printf("Error\n");
-		exit(98);
-	}
+	printf("Error\n");
+	exit(98);
 }
 
 /**
- * _revstr - reverses argument string
- * @str: string parameter
- * Return: pointer to reversed string
+ * main - multiplies two positive numbers
+ * @argc: number of arguments
+ * @argv: array of arguments
+ * Return: always 0 (Success)
  */
-char *_revstr(char *str)
+int main(int argc, char *argv[])
 {
-	int i, len, temp;
+	char *s1, *s2;
+	int len1, len2, len, i, carry, digit1, digit2, *result, a = 0;
 
-	len = _strlen(str);
-	for (i = 0; i < (len / 2); i++)
+	s1 = argv[1], s2 = argv[2];
+	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
+		errors();
+	len1 = _strlen(s1);
+	len2 = _strlen(s2);
+	len = len1 + len2 + 1;
+	result = malloc(sizeof(int) * len);
+	if (!result)
+		return (1);
+	for (i = 0; i <= len1 + len2; i++)
+		result[i] = 0;
+	for (len1 = len1 - 1; len1 >= 0; len1--)
 	{
-		temp = str[i];
-		str[i] = str[len - i - 1];
-		str[len - i] = temp;
-	}
-	return (str);
-}
-
-/**
- * local_calloc - works as calloc
- * @num1: string parameter 1
- * @num2: string parameter 2
- * Return: void pointer to allocated memory
- */
-void *local_calloc(char *num1, char *num2)
-{
-	int i, bytes;
-	char *sum;
-
-	bytes = _strlen(num1) + _strlen(num2);
-	sum = malloc(bytes + 1);
-	if (sum == NULL)
-		return (NULL);
-	for (i = 0; i < bytes; i++)
-		sum[i] = 0;
-	sum[i] = '\0';
-	return (sum);
-}
-
-/**
- * main - entry point for the program
- * @argc: argument count
- * @argv: argument vector
- * Return: Always 0 (success)
- */
-int main(int argc, char **argv)
-{
-	int i, j, temp_num = 0, quotient;
-	char *num1, *num2, *sum, *rev_num1, *rev_num2;
-
-	_isvalid(argc, argv);
-
-	num1 = *(argv + 1);
-	num2 = *(argv + 2);
-	rev_num1 = _revstr(num1);
-	rev_num2 = _revstr(num2);
-	sum = local_calloc(num1, num2);
-
-	for (i = 0; rev_num1[i] != '\0'; i++)
-	{
-		quotient = 0;
-		for (j = 0; rev_num2[j] != '\0'; j++)
+		digit1 = s1[len1] - '0';
+		carry = 0;
+		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
 		{
-			temp_num = (rev_num1[i] - '0') * (rev_num2[j] - '0');
-			sum[j + i] += temp_num % 10 + quotient;
-			quotient = (temp_num / 10) + (sum[j + i] / 10);
-			sum[j + i] %= 10;
+			digit2 = s2[len2] - '0';
+			carry += result[len1 + len2 + 1] + (digit1 * digit2);
+			result[len1 + len2 + 1] = carry % 10;
+			carry /= 10;
 		}
-		sum[j + i] += quotient;
+		if (carry > 0)
+			result[len1 + len2 + 1] += carry;
 	}
-
-	while (i + j > 0 && sum[i + j - 1] == 0)
-		i--;
-	while (i + j > 0)
+	for (i = 0; i < len - 1; i++)
 	{
-		putchar(sum[i + j - 1] + '0');
-		j--;
+		if (result[i])
+			a = 1;
+		if (a)
+			_putchar(result[i] + '0');
 	}
-
-	putchar('\n');
-	free(sum);
+	if (!a)
+		_putchar('0');
+	_putchar('\n');
+	free(result);
 	return (0);
 }
