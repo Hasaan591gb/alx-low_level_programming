@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 {
 	int result;
 	char op;
-	int num1 = atoi(*argv[1]), num2 = atoi(*argv[3]);
+	int num1, num2;
 
 	if (argc != 4)
 	{
@@ -20,12 +20,14 @@ int main(int argc, char **argv)
 		exit(98);
 	}
 	op = *argv[2];
+	num1 = atoi(argv[1]);
+	num2 = atoi(argv[3]);
 	if (op != '+' && op != '-' && op != '*' && op != '/' && op != '%')
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	if (num2 == 0 && (c == '/' || c == '%'))
+	if (num2 == 0 && (op == '/' || op == '%'))
 	{
 		printf("Error\n");
 		exit(100);
