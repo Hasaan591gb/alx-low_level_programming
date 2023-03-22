@@ -1,3 +1,5 @@
+#include "3-calc.h"
+
 /**
  * op_add - adds integer parameters
  * @a: first parameter
