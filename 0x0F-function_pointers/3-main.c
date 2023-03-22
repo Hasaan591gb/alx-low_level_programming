@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "3-calc.h"
 
 /**
@@ -10,16 +8,15 @@
  */
 int main(int argc, char **argv)
 {
-	int result;
-	char op;
-	int num1, num2;
+	int result, num1, num2;
+	char *op;
 
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	op = *argv[2];
+	op = argv[2];
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[3]);
 	if (op != '+' && op != '-' && op != '*' && op != '/' && op != '%')
