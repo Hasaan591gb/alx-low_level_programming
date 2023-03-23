@@ -10,7 +10,7 @@
  */
 int main(int argc, char **argv)
 {
-	unsigned int bytes, i;
+	int bytes, i;
 	int (*ptr)(int, char **) = main;
 	unsigned char opcode;
 
@@ -19,6 +19,7 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(1);
 	}
+
 	bytes = atoi(argv[1]);
 	if (bytes < 0)
 	{
@@ -26,12 +27,14 @@ int main(int argc, char **argv)
 		exit(2);
 	}
 
-	for (i = 0; i < bytes; i++, ptr++)
+	for (i = 0; i < bytes; i++)
 	{
 		opcode = *(unsigned char *)ptr;
-		printf("%02x", opcode);
-		if (i != (bytes - 1))
-			printf(" ");
+		printf("%.2x", opcode);
+		if (i == bytes - 1)
+			continue;
+		printf(" ");
+		ptr++;
 	}
 	printf("\n");
 	return (0);
