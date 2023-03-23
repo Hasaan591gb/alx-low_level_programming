@@ -11,7 +11,7 @@
 int main(int argc, char **argv)
 {
 	unsigned int bytes, i;
-	unsigned char *ptr = (unsigned char *)main;
+	int (*ptr)(int, char **) = main;
 
 	if (argc != 2)
 	{
