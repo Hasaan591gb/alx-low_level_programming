@@ -30,6 +30,7 @@ int main(int argc, char **argv)
 		printf("%02x ", *(ptr + i));
 		if (i != bytes - 1)
 			printf(" ");
+	}
 	printf("\n");
 	return (0);
 }
