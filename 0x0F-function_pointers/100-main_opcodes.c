@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 
 	for (i = 0; i < bytes; i++)
 	{
-		printf("%02x ", *(ptr + i));
+		printf("%02x", *(unsigned char *)(ptr + i));
 		if (i != bytes - 1)
 			printf(" ");
 	}
