@@ -11,7 +11,7 @@
 int main(int argc, char **argv)
 {
 	unsigned int bytes, i;
-	int (*ptr)(int, char **);
+	char *ptr;
 
 	if (argc != 2)
 	{
@@ -25,10 +25,10 @@ int main(int argc, char **argv)
 		exit(2);
 	}
 
-	ptr = main;
+	ptr = (char *)main;
 	for (i = 0; i < bytes; i++)
 	{
-		printf("%02x", *(unsigned char *)(ptr + i));
+		printf("%02x", *(ptr + i));
 		if (i != (bytes - 1))
 			printf(" ");
 	}
