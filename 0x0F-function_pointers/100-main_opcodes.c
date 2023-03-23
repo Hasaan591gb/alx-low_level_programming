@@ -31,8 +31,8 @@ int main(int argc, char **argv)
 		opcode = *(unsigned char *)ptr;
 		printf("%02x", opcode);
 		if (i != (bytes - 1))
-			printf(' ');
+			printf(" ");
 	}
-	printf('\n');
+	printf("\n");
 	return (0);
 }
