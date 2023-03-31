@@ -3,7 +3,7 @@
 /**
  * pre_main - function with constructor attribute
  * Description: this function will be called automatically
- * 		before main() is executed
+ *		before main() is executed
  */
 void __attribute__ ((constructor)) pre_main()
 {
