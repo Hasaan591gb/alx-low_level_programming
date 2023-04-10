@@ -3,6 +3,40 @@
 #define BUFFER_SIZE 1024
 
 /**
+ * error_check - Checks for errors and exits the program if necessary
+ * @bytes_read: Number of bytes read
+ * @file_from: First file descriptor to check
+ * @file_to: Second file descriptor to check
+ *
+ * Description: Checks if an error occurred while reading from a file,
+ *              or while closing either of the two file descriptors.
+ *              If an error occurred, prints an error message to the
+ *              standard error and exits the program with the appropriate
+ *              error code.
+ */
+void error_check(ssize_t bytes_read, int file_from, int file_to)
+{
+	if (bytes_read == -1)
+	{
+		dprintf(STDERR_FILE_NO, "Error: Can't read from file %s\n", argv[1]);
+		close(file_from);
+		close(file_to);
+		exit(98);
+	}
+
+	if (close(file_from) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
+		exit(100);
+	}
+	if (close(file_to) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
+		exit(100);
+	}
+}
+
+/**
  * main - Entry point
  * @argc: Number of command line arguments
  * @argv: Array of command line arguments
@@ -52,24 +86,8 @@ int main(argc, **argv)
 			exit(99);
 		}
 	}
-	if (bytes_read == -1)
-	{
-		dprintf(STDERR_FILE_NO, "Error: Can't read from file %s\n", argv[1]);
-		close(file_from);
-		close(file_to);
-		exit(98);
-	}
-
-	if (close(file_from) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-		exit(100);
-	}
-	if (close(file_to) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
-		exit(100);
-	}
-
+	check1 = close(file_from);
+	check2 = close(file_to);
+	error_check(bytes_read, check1, check2);
 	return (0);
 }
