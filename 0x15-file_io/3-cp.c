@@ -2,58 +2,18 @@
 
 #define BUFFER_SIZE 1024
 
-/**
- * error_check - Checks for errors and exits the program if necessary
- * @bytes_read: Number of bytes read
- * @file_from: First file descriptor to check
- * @file_to: Second file descriptor to check
- *
- * Description: Checks if an error occurred while reading from a file,
- *              or while closing either of the two file descriptors.
- *              If an error occurred, prints an error message to the
- *              standard error and exits the program with the appropriate
- *              error code.
- */
-void error_check(ssize_t bytes_read, int file_from, int file_to)
-{
-	if (bytes_read == -1)
-	{
-		dprintf(STDERR_FILE_NO, "Error: Can't read from file %s\n", argv[1]);
-		close(file_from);
-		close(file_to);
-		exit(98);
-	}
-
-	if (close(file_from) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-		exit(100);
-	}
-	if (close(file_to) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
-		exit(100);
-	}
-}
+void copy_file(int file_from, int file_to, char *argv1, char *argv2);
 
 /**
  * main - Entry point
- * @argc: Number of command line arguments
- * @argv: Array of command line arguments
+ * @argc: The number of command line arguments
+ * @argv: The command line arguments
  *
- * Description: Copies the content of a file to another file
- *
- * Return: 0 on success, or one of the following error codes:
- *         97 - Incorrect number of arguments
- *         98 - Can't read from file_from
- *         99 - Can't write to file_to
- *         100 - Can't close a file descriptor
+ * Return: 0 on success, or one of the error codes on failure
  */
 int main(argc, **argv)
 {
 	int file_from, file_to;
-	ssize_t bytes_read, bytes_written;
-	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
 	{
@@ -75,19 +35,50 @@ int main(argc, **argv)
 		exit(99);
 	}
 
+	copy_file(file_from, file_to, argv[1], argv[2]);
+
+	if (close(file_from) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
+		exit(100);
+	}
+	if (close(file_to) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
+		exit(100);
+	}
+
+	return (0);
+}
+
+/**
+ * copy_file - Copies the content of a source file to a destination file
+ * @file_from: The file descriptor of the source file
+ * @file_to: The file descriptor of the destination file
+ * @argv1: argv[1]
+ * @argv2: argv[2]
+ */
+void copy_file(int file_from, int file_to, char *argv1, char *argv2)
+{
+	ssize_t bytes_read, bytes_written;
+	char buffer[BUFFER_SIZE];
+
 	while ((bytes_read = read(file_from, buffer, BUFFER_SIZE)) > 0)
 	{
-		bytes_written = write(file_to, buffer, BUFFER_SIZE);
+		bytes_written = write(file_to, buffer, bytes_read);
 		if (bytes_written != bytes_read)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv2);
 			close(file_from);
 			close(file_to);
 			exit(99);
 		}
 	}
-	check1 = close(file_from);
-	check2 = close(file_to);
-	error_check(bytes_read, check1, check2);
-	return (0);
+	if (bytes_read == -1)
+	{
+		dprintf(STDERR_FILE_NO, "Error: Can't read from file %s\n", argv1);
+		close(file_from);
+		close(file_to);
+		exit(98);
+	}
 }
