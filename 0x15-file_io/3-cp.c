@@ -11,7 +11,7 @@ void copy_file(int file_from, int file_to, char *argv1, char *argv2);
  *
  * Return: 0 on success, or one of the error codes on failure
  */
-int main(argc, **argv)
+int main(int argc, char **argv)
 {
 	int file_from, file_to;
 
@@ -24,7 +24,7 @@ int main(argc, **argv)
 	file_from = open(argv[1], O_RDONLY);
 	if (file_from == -1)
 	{
-		dprintf(STDERR_FILE_NO, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 
@@ -76,7 +76,7 @@ void copy_file(int file_from, int file_to, char *argv1, char *argv2)
 	}
 	if (bytes_read == -1)
 	{
-		dprintf(STDERR_FILE_NO, "Error: Can't read from file %s\n", argv1);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv1);
 		close(file_from);
 		close(file_to);
 		exit(98);
