@@ -10,4 +10,4 @@ for i in range(999, 899, -1):
         if is_palindrome(product) and product > max_palindrome:
             max_palindrome = product
 
-print(max_palindrome)
+print("{:d}".format(max_palindrome))
