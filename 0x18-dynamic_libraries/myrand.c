@@ -17,6 +17,5 @@ int rand(void)
 		return 23;
 	if (i == 6)
 		return 74;
-	else
-		return (i << 2) % 75;
+	return (i << 2) % 75;
 }
