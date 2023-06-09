@@ -19,7 +19,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	dup_value = strdup(value);
 	if (dup_value == NULL)
 		return (0);
-	index = key_index(key, ht->size);
+	index = key_index((const unsigned char *)key, ht->size);
 	if (ht->array[index] != NULL)
 	{
 		if (strcmp(key, ht->array[index]->key) == 0)
