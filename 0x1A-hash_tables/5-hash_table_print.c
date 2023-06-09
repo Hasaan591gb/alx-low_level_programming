@@ -29,7 +29,7 @@ void hash_table_print(const hash_table_t *ht)
 				if (tmp != NULL)
 					printf(", ");
 			}
-			comma_flag = 1;
+			comma = 1;
 		}
 	}
 	printf("}\n");
